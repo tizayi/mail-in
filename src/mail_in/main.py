@@ -1,7 +1,7 @@
 from typing import List
 
 from fastapi import FastAPI
-from .utils.utils import StorageTempOptions, User, ColumnOptions
+from .utils.utils import StorageTempOptions, SaxMailIn, ColumnOptions
 
 app = FastAPI()
 
@@ -18,5 +18,5 @@ def get_storage_temps() -> List[str]:
     return [member.value for member in StorageTempOptions]
 
 @app.post("/mail_in/submit")
-def post_mail_in(user: User) -> User:
-    return user
+def post_mail_in(input: SaxMailIn) -> SaxMailIn:
+    return input

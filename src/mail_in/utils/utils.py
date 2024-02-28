@@ -40,28 +40,34 @@ class HPLC(BaseModel):
     @classmethod
     def validate_column(cls, column: str):
         if column not in ColumnOptions:
-            enum_values = [member.value for member in ColumnOptions]
-            raise ValueError(f"{column} is not a valid column the available columns are {enum_values}")
+            raise ValueError(f"{column} is not a valid column")
         return column
 
 class Batch(BaseModel):
     holder_id: str
-    sample_position: str
+    sample_position: int
     sample_name: str
     buffer: Buffer
     concentration: float
     volume: float
     molecular_weight: float
     notes: str
+
+    @field_validator("sample_position")
+    @classmethod
+    def validate_simple_position(cls, sample_position: int)-> int:
+        if sample_position > 9 or sample_position < 1:
+            raise ValueError(f"sample position must be between 1 and 9")
+        return sample_position 
     
     @field_validator("volume")
     @classmethod
-    def validate_volume(cls,volume: float):
+    def validate_volume(cls, volume: float)-> float:
         if volume < 25:
             raise ValueError("volume must be more than 25ul")
         return volume
 
-class User(BaseModel):
+class SaxMailIn(BaseModel):
     visit_id: str
     holder_id: str
     name: str
@@ -69,12 +75,11 @@ class User(BaseModel):
     contact_phone_number: Optional[str]
     local_contact: str
     storage_temp: StorageTempOptions
-    samples: Sequence[HPLC]| Sequence[Batch]
+    samples: Sequence[HPLC] | Sequence[Batch]
 
     @field_validator("storage_temp")
     @classmethod
     def validate_storage_temp(cls, storage_temp: str):
         if storage_temp not in StorageTempOptions:
-            enum_values = [member.value for member in StorageTempOptions]
-            raise ValueError(f"{storage_temp} is not a valid storage temp the available temps are {enum_values}")
+            raise ValueError(f"{storage_temp} is not a valid storage temperature")
         return storage_temp
