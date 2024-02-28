@@ -17,7 +17,8 @@ dependencies = [
     "click",
     "fastapi",
     "pydantic",
-    "pandas"
+    "pandas",
+    "uvicorn[standard]"
 
 ] # Add project dependencies here, e.g. ["click", "numpy"]
 dynamic = ["version"]

@@ -1,0 +1,11 @@
+hplc_column:
+ - "Showdex KW-403"
+ - "Showdex KW-402.5"
+ - "Showdex KW-404"
+ - "Showdex KW-405"
+ - "Superdex 200 Increase 3.2"
+ - "Superose 6 Increase 3.2"
+storage_temperature:
+  - "room"
+  - "-80"
+  - "-4"
