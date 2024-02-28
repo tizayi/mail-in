@@ -1,24 +1,22 @@
-from typing import Union
+from typing import List
 
 from fastapi import FastAPI
-from pydantic import BaseModel
+from .utils.utils import StorageTempOptions, User, ColumnOptions
 
 app = FastAPI()
-class Item(BaseModel):
-    name: str
-    price: float
-    is_offer: Union[bool, None] = None
-
-
 
 @app.get("/")
 def read_root():
     return {"hello": "world"}
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str,None]=None):
-    return {"item_id": item_id, "q": q}
+@app.get("/hplc_column")
+def get_current_hplc_columns() -> List[str]:
+    return [member.value for member in ColumnOptions]
 
-@app.put("/items/{item_id}")
-def update_item(item_id:int, item: Item):
-    return {"item_name": item.name, "item_id": item_id}
+@app.get("/storage_temp")
+def get_storage_temps() -> List[str]:
+    return [member.value for member in StorageTempOptions]
+
+@app.post("/mail_in/submit")
+def post_mail_in(user: User) -> User:
+    return user
