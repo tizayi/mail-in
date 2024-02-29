@@ -1,7 +1,7 @@
 from typing import List
 
 from fastapi import FastAPI
-from .utils.utils import StorageTempOptions, SaxMailIn, ColumnOptions
+from .dependencies import StorageTempOptions, SaxMailIn, ColumnOptions
 
 app = FastAPI()
 
