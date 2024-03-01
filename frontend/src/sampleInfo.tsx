@@ -8,7 +8,7 @@ export function HplcSampleInfo() {
       <Card>
           <CardBody>
           <Stack>
-              <Center>HPLC Sample Info</Center>
+              <Center>Hplc Sample Info</Center>
                 <Input placeholder='Name' />
                 <Input placeholder='position'/>
                 <Input placeholder="concentration"/>
