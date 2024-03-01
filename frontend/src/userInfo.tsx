@@ -14,9 +14,9 @@ export default function UserInfo() {
             <Input placeholder='Email' />
             <Input placeholder='Phone Number' />
             <Select placeholder='Local Contact'>
-                <option value='option1'>Option 1</option>
-                <option value='option2'>Option 2</option>
-                <option value='option3'>Option 3</option>
+                <option value='person1'>person 1</option>
+                <option value='person2'>person 2</option>
+                <option value='person3'>person 3</option>
             </Select>
         </Stack>
         </CardBody>
