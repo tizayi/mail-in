@@ -3,6 +3,7 @@ import {  Card, CardBody, Stack, Input, Select, Center } from '@chakra-ui/react'
 import HolderDiagram from "./holderDiagram"
 import {HolderMode} from "./types"
 import { useState } from "react"
+import { BufferInfo } from "./sampleInfo"
 
 export default function HolderInfo() {
     const [mode, setMode] = useState<HolderMode>("hplc");
@@ -23,6 +24,9 @@ export default function HolderInfo() {
                   <option value='hplc'>HPLC</option>
                   <option value='batch'>Batch</option>
               </Select>
+              { mode ==="hplc" &&
+              <BufferInfo/>
+              }
           </Stack>
           </CardBody>
       </Card>

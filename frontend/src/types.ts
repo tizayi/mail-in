@@ -1,1 +1,1 @@
-export type HolderMode = "hplc"|"batch"
+export type HolderMode = "hplc" | "batch"

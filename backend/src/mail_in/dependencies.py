@@ -1,7 +1,7 @@
 from pydantic import BaseModel, field_validator, model_validator, EmailStr, Field
 import yaml
 from typing import TypedDict, Sequence, Optional
-from enum import Enum, StrEnum
+from enum import StrEnum
 
 class AppConfig(TypedDict):
     hplc_column: Sequence[str]
@@ -32,6 +32,7 @@ class Buffer(BaseModel):
             raise ValueError("position must be between 1 and 9 inclusive or none")
         return position
 
+
 class HplcSample(BaseModel):
     name: str
     position: int
@@ -47,6 +48,7 @@ class HplcSample(BaseModel):
         if position and (position < 1 or position > 9):
             raise ValueError("position must be between 1 and 9 inclusive or none")
         return position
+
 
 class HPLCHolder(BaseModel):
     storage_temp: StorageTempOptions
@@ -76,7 +78,7 @@ class HPLCHolder(BaseModel):
         if not (len(sample_names) == len(set(sample_names))):
             raise ValueError("sample names must be unique")
         return samples
-    
+
 
 class BatchSample(BaseModel):
     name: str
@@ -147,3 +149,4 @@ class SaxMailIn(BaseModel):
     user: User
     batch_holders: Sequence[BatchHolder]
     hplc_holders: Sequence[HPLCHolder]
+
