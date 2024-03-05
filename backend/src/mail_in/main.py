@@ -19,4 +19,5 @@ def get_storage_temps() -> List[str]:
 
 @app.post("/mail_in/submit")
 def post_mail_in(input: SaxMailIn) -> SaxMailIn:
+    print(input)
     return input

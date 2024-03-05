@@ -131,11 +131,11 @@ class BatchHolder(BaseModel):
         return self
 
 
-class User(BaseModel):
+class Visit(BaseModel):
     visit_id: str
     name: str
-    contact_email: EmailStr
-    contact_phone_number: Optional[str] = Field(default=None)
+    email: EmailStr
+    phone_number: Optional[str] = Field(default=None)
     local_contact: str  
 
     @field_validator("contact_phone_number")
@@ -146,7 +146,7 @@ class User(BaseModel):
         return number
 
 class SaxMailIn(BaseModel):
-    user: User
+    user: Visit
     batch_holders: Sequence[BatchHolder]
     hplc_holders: Sequence[HPLCHolder]
 
