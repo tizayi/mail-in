@@ -42,6 +42,7 @@ class Buffer(BaseModel):
 
 class Sample(BaseModel):
     id: str
+    name: str
     holder_id: str
     position: int
     concentration: Optional[float] = Field(default=None)
@@ -100,7 +101,7 @@ class SaxMailIn(BaseModel):
         if len(buffer_positions) < 1:
             raise ValueError("There must be atleast one buffer")
         
-       # Check batch mode buffers exist
+        # Check batch mode buffers exist
         if (self.holder.type == HolderType.Batch):
             if set(sample_buffers) != set(buffer_ids):
                 raise ValueError("Sample Buffers in Batch mode must coresspond to a real buffer")
