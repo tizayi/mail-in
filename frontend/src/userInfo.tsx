@@ -1,5 +1,5 @@
 import "./App.css"
-import {  Card, CardBody, Stack, Input, Select, Center } from '@chakra-ui/react'
+import {  Card, CardBody, Stack, Input, Select, Center, Button } from '@chakra-ui/react'
 
 export default function UserInfo() {
 
@@ -18,6 +18,7 @@ export default function UserInfo() {
                 <option value='person2'>person 2</option>
                 <option value='person3'>person 3</option>
             </Select>
+            <Button>Submit</Button>
         </Stack>
         </CardBody>
     </Card>

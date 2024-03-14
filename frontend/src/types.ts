@@ -47,3 +47,9 @@ export interface HPLCHolder{
     samples: HplcSample[],
     buffer: Buffer
 }
+
+export interface MailInInput{
+    user: Visit,
+    batch_holders: BatchHolder[],
+    hplc_holders: HPLCHolder[]
+}
